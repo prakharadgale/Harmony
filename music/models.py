@@ -16,14 +16,14 @@ class Muser(models.Model):
     image = models.ImageField(upload_to='images/user/',default='',blank=True, null=True)
     otp = models.IntegerField(default=000000)
     
-    def save(self):
+    def save(self, *args, **kwargs):
         im = Image.open(self.image)
         output = BytesIO()
         # im = im.resize((100, 100))
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='PNG', quality=10)
         output.seek(0)
         self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg/png',sys.getsizeof(output), None)
-        super(Muser, self).save()
+        super(Muser, self).save(*args,**kwargs)
 
 
     def __str__(self):
@@ -34,14 +34,14 @@ class Songtype(models.Model):
     name = models.CharField(max_length=20,default="")
     image = models.ImageField(upload_to='images/songtype/',default='',blank=True, null=True)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         im = Image.open(self.image)
         output = BytesIO()
         # im = im.resize((100, 100))
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='PNG', quality=10)
         output.seek(0)
         self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg/png',sys.getsizeof(output), None)
-        super(Songtype, self).save()
+        super(Songtype, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name 
@@ -51,14 +51,14 @@ class Songgenre(models.Model):
     name = models.CharField(max_length=15,default="")
     image = models.ImageField(upload_to='images/songgenre/',default='',blank=True, null=True)
 
-    def save(self):
+    def save(self,*args, **kwargs):
         im = Image.open(self.image)
         output = BytesIO()
         # im = im.resize((100, 100))
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='PNG', quality=10)
         output.seek(0)
         self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg/png',sys.getsizeof(output), None)
-        super(Songgenre, self).save()
+        super(Songgenre, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -86,7 +86,7 @@ class Artist(models.Model):
         im = Image.open(self.image)
         output = BytesIO()
         # im = im.resize((100, 100))
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='PNG', quality=10)
         output.seek(0)
         self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg/png',sys.getsizeof(output), None)
         super(Artist, self).save()
@@ -124,14 +124,14 @@ class Tour(models.Model):
     tourimage = models.ImageField(upload_to='images/tour/',default='',blank=True, null=True)
     status = models.IntegerField(default=0) # 1-show , 2-any thing else
 
-    def save(self):
+    def save(self,*args, **kwargs):
         im = Image.open(self.tourimage)
         output = BytesIO()
         # im = im.resize((100, 100))
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='PNG', quality=10)
         output.seek(0)
         self.tourimage = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.tourimage.name.split('.')[0], 'image/jpeg/png',sys.getsizeof(output), None)
-        super(Tour, self).save()
+        super(Tour, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.eventname

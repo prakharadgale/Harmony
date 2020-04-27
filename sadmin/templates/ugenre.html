@@ -35,9 +35,9 @@
                 <input type="text" class="form-control" name="gname" placeholder="Enter genre name">
               </div>
               <div class="form-group">
-                <label for="inputState" style="font-size:20px;">Rate</label>
+                <label for="inputState" style="font-size:20px;">Select language</label>
                 <select id="inputState" class="form-control" name="stype" >
-                    <option value='-1'>Song Type</option>
+                    <option value='-1'>Language</option>
                     {% for songtype in songtype %}
                     <option value="{{songtype.name}}">{{songtype.name}}</option>
                     {% endfor %}
